@@ -1,10 +1,12 @@
 import express from 'express';
 import userRoutes from './routes/usuario.route';
+import homeRoutes from './routes/home.route';
 
 class Server {
     private app:express.Application;
     private port:string;
     private apiPath = {
+        home: "/",
         usuarios: "/usuarios"
     }
 
@@ -16,6 +18,7 @@ class Server {
 
     routes(){
         this.app.use(this.apiPath.usuarios, userRoutes)
+        this.app.use(this.apiPath.home, homeRoutes)
     }
 
     listen(){
